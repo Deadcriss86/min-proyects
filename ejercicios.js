@@ -27,20 +27,72 @@ console.log("la ciudad: "+item.ciudad+" se encuentra en: "+item.pais)
 })
 
 
-function abreviarString(texto){
-    let textoLimpio=texto.replace(/[^a-zA-Z\s]/g, '');
+const getAbbreviations = (dataArray) => {
+    dataArray.forEach((city) => {
+      let { ciudad } = city;
+      let ciudadArray = ciudad.split(" ");
+      if (ciudadArray.length > 1) {
+        let intials = "";
+        ciudadArray.forEach((word) => {
+          let intial = word.charAt(0);
+          intials += `${intial.toUpperCase()}. `;
+        });
+        console.log(intials);
+      } else {
+        let incialesCiudad = ciudad.substring(0, 3);
+        console.log(incialesCiudad);
+      }
+    });
+  };
+  
+  getAbbreviations(cities);
 
-    return textoLimpio
-    .split(' ')
-    .map(word =>word.charAt(0))
-    .join('');
-}
+  /*  ejercios 3 y 4 */
 
+  let persons = [
+    {
+      nombre: "Juan",
+      apellidos: "García Pérez",
+      edad: 30,
+      correo: "juan.garcia@example.com",
+    },
+    {
+      nombre: "María",
+      apellidos: "Martínez López",
+      edad: 25,
+      correo: "maria.martinez@example.com",
+    },
+    {
+      nombre: "Carlos",
+      apellidos: "Rodríguez Gómez",
+      edad: 28,
+      correo: "carlos.rodriguez@example.com",
+    },
+    {
+      nombre: "Ana",
+      apellidos: "Hernández Ruiz",
+      edad: 35,
+      correo: "ana.hernandez@example.com",
+    },
+    {
+      nombre: "Javier",
+      apellidos: "Díaz Fernández",
+      edad: 22,
+      correo: "javier.diaz@example.com",
+    },
+  ];
 
-let ciudadesAbreviadas = cities.map((ciudadAbreviada)=>{
-    console.log(ciudadAbreviada)
+  persons.forEach((people)=>{
+    let fullnames=people.nombre+" "+people.apellidos
+    console.log(fullnames)
 })
 
-let textoOriginal = arrayString;
-let abreviatura=abreviarString(textoOriginal);
-console.log(abreviatura)
+persons.map((people)=>{
+    let emails=people.correo;
+    let e_mail=emails.split("@")
+    e_mail.pop();
+    e_mail.push("@kodemia.mx")
+    let prueba=e_mail[0]+e_mail[1]
+    console.log(prueba)
+})
+
